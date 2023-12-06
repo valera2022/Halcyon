@@ -5,10 +5,7 @@ class ApplicationController < ActionController::API
        User.find_by(entryable_id: session[:entryable_id])
        
     end
-    def try 
-          puts session.inspect
     
-    end
     def authorized_teacher 
         return render json: {error: "Not Authorized"},status: :unauthorized unless current_user.entryable_type == "Teacher"
 
