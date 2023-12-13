@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState ,useContext} from 'react'
-import { CoursesContext } from './context/coursesContext'
+import { UserContext } from './context/contex'
 
 export default function AddCourse() {
      const [title, setTitle] = useState("")
@@ -8,12 +8,12 @@ export default function AddCourse() {
      const [date, setDate] = useState("")
      const [location, setLocation] = useState("")
      const [price, setPrice] = useState()
-     const {createCourse,courseErrors}= useContext(CoursesContext)
-      console.log(title)
-      console.log(description)
-      console.log(date)
-      console.log(location)
-      console.log(price)
+     const {createCourse,courseErrors}= useContext(UserContext)
+     //  console.log(title)
+     //  console.log(description)
+     //  console.log(date)
+     //  console.log(location)
+     //  console.log(price)
       
      const formData = {
           title: title,

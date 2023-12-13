@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import {forwardRef, useImperativeHandle, useRef} from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 const UserContext = React.createContext();
 
 function UserProvider ({children}){
-    const [courses,setCourses] = useState()
-    const [user, setUser] = useState(null)
+    const [courses,setCourses] = useState([])
+    const [coursesErrors,setCourseErrors] = useState([])
+    const [user, setUser] = useState({})
     const [loggedin, setLoggedin] = useState(false)
-
+    
+    const navigate = useNavigate()
     console.log(user)
 
     const login = (newUser) => {
         setUser(newUser)
         setLoggedin(true)
-        // fetchPitches()
+        fetchCourses()
 
     }
 
@@ -32,6 +35,7 @@ function UserProvider ({children}){
             .then(res => res.json())
             .then(data => {
                 if (!data.error) {
+                    console.log(data)
                     console.log("auto login")
 
                     setUser(data)
@@ -45,7 +49,7 @@ function UserProvider ({children}){
     }, [])
 
     function fetchCourses() {
-        fetch("/courses")
+        fetch("/classes")
             .then(res => res.json())
             .then(data => {
 
@@ -62,8 +66,123 @@ function UserProvider ({children}){
 
     }
 
+    function createCourse(clas){
+        console.log(clas)
+        fetch("/classes", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(clas)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.errors) {
+                    console.log(data)
+                    setCourses([...courses, data])
+                    navigate("/dash")
+
+
+                }
+                else {
+                    // setPitches(pitches)
+                    console.log(data.errors)
+                    const mistakes = data.errors.map(e => <li>{e}</li>)
+                    setCourseErrors(mistakes)
+
+
+                }
+
+            })
+    }
+
+    function patchCourse(formData){
+        console.log(formData.title)
+        fetch(`/classes/${formData.id}`,{
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+             
+
+            },
+            body: JSON.stringify( formData)
+        })
+        .then(res=> res.json())
+        .then(data => {
+             if(!data.erros){
+                console.log(data)
+                // const foundCourse = courses.find(c=> c.id === formData.id)
+                let editedCourse =courses.map((c)=>{
+                    if (c.id === data.id){
+                          return data
+                    }
+                    else {
+                        return c
+                    }
+                })
+
+                setCourses(editedCourse)
+                // let updatedCourse = { ...foundCourse, courses: editedCourse}
+                // courses.map(c=>{})
+               
+
+
+             }
+           
+        }
+        )
+    }
+              function deleteCourse(id){
+                console.log(id)
+                   fetch(`/classes/${id}`,{
+                    method:"DELETE",
+                    headers:{"Content-Type" : "applicaton/json"},
+                    body: JSON.stringify()
+                   })
+                   .then((r)=>{
+                    let filtered = courses.filter( course => course.id !== id)
+                    setCourses(filtered)
+                    
+                
+                    console.log("deleting..")
+                    navigate("/dash")
+
+                   } )
+                  
+              }
+
+              function createEnrollment(id){
+                    fetch("/enroll",{
+                        method: "POST",
+                        headers:{
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(id)
+                    })
+                    .then(res=> res.json())
+                    .then(data=> console.log(data))
+
+              }
+
+              function deleteEnroll(data){
+                fetch(`/enroll/${data.course_id}`,{
+                    method:"DELETE",
+                    headers:{"Content-Type" : "applicaton/json"},
+                    body: JSON.stringify(data)
+                   })
+                   .then((r)=>{
+                    // let filtered = courses.filter( course => course.id !== id)
+                    // setCourses(filtered)
+                    
+                
+                    // console.log("deleting..")
+                    // navigate("/dash")
+
+                   } )
+
+              }
+    
+
     return (
-        <UserContext.Provider value={{  login,loggedin,logout }}>
+        <UserContext.Provider value={{ deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse }}>
             {children}
         </UserContext.Provider>
     );

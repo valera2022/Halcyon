@@ -5,6 +5,6 @@ class Teacher < ApplicationRecord
     has_many :enrollments, through: :courses
     has_many :students,through: :enrollments
 
-    
+  
     
 end

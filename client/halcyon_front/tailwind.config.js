@@ -14,6 +14,8 @@ module.exports = {
     },
     extend: {
       colors:{
+        Hgold:'#da9100',
+        Ygold:'#ffdf00'
 
       },
       boxShadow: {

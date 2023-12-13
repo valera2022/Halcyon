@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+   skip_before_action :authorize
     def show 
-        user = User.find_by(id: session[:entryable_id])
+        puts "session: #{session.inspect}"
+        user = User.find_by(id: session[:user_id])
         if user 
            render json: user
         else

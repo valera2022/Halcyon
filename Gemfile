@@ -78,6 +78,8 @@ group :test do
   gem "webdrivers"
 end
 
+gem "active_model_serializers", "~> 0.10.12"
+
   
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 

@@ -7,7 +7,7 @@
 
   .sidebar-icon{
 
-    @apply relative  flex items-center justify-center h-9 w-9 mt-2 mb-2 mx-auto  bg-gray-700 text-white  hover:bg-violet-600 hover:rounded-md hover:delay-200
+    @apply  rounded-md relative  flex items-center justify-center h-9 w-9 mt-2 mb-2 mx-auto  bg-gray-700 text-white  hover:bg-violet-600 hover:rounded-md hover:delay-200
 
   }
   
@@ -27,6 +27,60 @@ code {
   /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace; */
 }
+
+/*   Open state of the dialog  */
+dialog[open] {
+  opacity: 2;
+  transform: scaleY(1);
+}
+
+/*   Closed state of the dialog   */
+dialog {
+  opacity: 0;
+  transform: scaleY(0);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out,
+    overlay 0.7s ease-out allow-discrete,
+    display 0.7s ease-out allow-discrete;
+  /* Equivalent to
+  transition: all 0.7s allow-discrete; */
+}
+
+/*   Before-open state  */
+/* Needs to be after the previous dialog[open] rule to take effect,
+    as the specificity is the same */
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+/* Transition the :backdrop when the dialog modal is promoted to the top layer */
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0);
+  transition:
+    display 0.7s allow-discrete,
+    overlay 0.7s allow-discrete,
+    background-color 0.7s;
+  /* Equivalent to
+  transition: all 0.7s allow-discrete; */
+}
+
+dialog[open]::backdrop {
+  background-color: rgba(0, 0, 0, 0.654);
+}
+
+/* This starting-style rule cannot be nested inside the above selector
+because the nesting selector cannot represent pseudo-elements. */
+
+@starting-style {
+  dialog[open]::backdrop {
+    background-color: rgb(0 0 0 / 0);
+  }
+}
+
 
 
 

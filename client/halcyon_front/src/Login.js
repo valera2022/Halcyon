@@ -66,8 +66,8 @@ function Login (){
         <form onSubmit={handleSubmit}>
           
      
-           username
-          {/* <label for="username" class="  pl-[45px] block text-sm font-medium leading-6 text-gray-900">Username</label> */}
+           
+          <label for="username" class="  pl-[45px] block text-sm font-medium leading-6 text-gray-900">Username</label>
           <div className="mt-2 a pl-6" >
           <input  className = "  block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 h-6 w-24" type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
           </div>
@@ -76,8 +76,8 @@ function Login (){
 
        
 
-          password
-          {/* <label for="password" class="  pl-[45px] block text-sm font-medium leading-6 text-gray-900">Password</label> */}
+         
+          <label for="password" class="  pl-[45px] block text-sm font-medium leading-6 text-gray-900">Password</label>
           <div className="mt-2 pl-6">
           <input className=" h-6 block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-[100px] mb-2"type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
           </div>

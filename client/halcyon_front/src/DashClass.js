@@ -1,35 +1,55 @@
 import React from 'react'
 import EditCourse from './EditCourse'
 import Delete from './Delete'
+import { UserContext } from './context/contex'
+import { useContext } from 'react'
+import { useParams } from 'react-router-dom'
+import Enroll from './enroll'
 
 export default function DashClass() {
-  function handleClick(){
-    alert("You just deleted this class")
-  }
+  const {courses,user} = useContext(UserContext)
+  const {id} = useParams()
+ 
+  let course = courses.find(c =>c.id === parseInt(id) )
+ 
+ 
+
+
+ if(course){
   return (
     <div className='flex h-screen w-screen justify-center pl-[400px] pt-8  bg-gradient-to-r from-amber-500 via-yellow-300 to-pink-500 ... '>
-    <div className='bg-white w-[300px] h-[235px] m-[20px] shadow-2xl rounded-lg border border-slate-300' >
+    <div className='bg-white w-[500px] h-[335px] m-[20px] shadow-2xl rounded-lg border border-slate-300' >
        <div className=' rounded-lg  text-center bg-zinc-200 border-2 bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ...  ' >
-         <h2  >Title:</h2>
+         <h2  >{course.title}</h2>
        </div>
      
-       <div className='h-[140px] w-[268px] bg-white ' >
-         <p>Date:  </p>
-          <p className='text-center pb-12'>about:</p>
-          <p>Location:</p>
-        </div>
-        <p className='bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ...  h-[32px]  '>price:</p>
-         <div className='flex bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ... '>
-          <EditCourse/>
-          <Delete/>
-
-         {/* <button className=" mr-[100px] rounded-md bg-blue-600 w-[100px]  py-2  text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit</button> */}
-         {/* <button onClick={handleClick} className="rounded-md bg-red-600 w-[100px] h-[40px] py-2   text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete</button> */}
+       <div className='h-[140px] w-[268px] bg-white  ' >
+         <div className='mb-[20px] font-semibold'>
+           <p>Date: {course.date}  </p>
          </div>
+
+         <div className=''>
+          <p className='text-center... hyphens-auto ... pb-10 max-w-[480px] max-h-[480px] '>{course.description}</p>
+          </div>
+           <div className='fixed '>
+           <p className='font-semibold'>Location: {course.location}</p>
+           <p className=' h-[30px] font-semibold  '>Price: {course.price}</p>
+          </div>
+        </div>
+          {user.id === course.teacher_id? <div className=' mt-[130px] rounded-lg flex bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ... '>
+          {user.entryable_type === "Teacher"? <EditCourse course={course}/> : null}
+          {user.entryable_type === "Teacher"? <Delete idd={course.id}/> : null}
+        
+
+        
+         </div> : null}
+         <div className=' mt-[130px] rounded-lg flex bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ... '>
+         <Enroll clase={course}/> 
+        </div>
     </div>
     </div>
     
-  )
+  )}
 }
 // text-center bg-zinc-200 border-2 border-b-slate-500
 // h-[160px] w-[268px] bg-sky-100 

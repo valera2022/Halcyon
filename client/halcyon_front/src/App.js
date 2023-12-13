@@ -6,8 +6,11 @@ import { Routes,Route } from 'react-router-dom';
 import Login from './Login';
 import Navbar from './Navbar';
 import AddCourse from './AddCourse';
-import { CoursesProvider } from './context/coursesContext';
+
 import DashClass from './DashClass';
+import Profile from './Profile';
+import MyCourses from './MyCourses';
+
 
 
 
@@ -16,7 +19,8 @@ function App() {
     <div className="body">
       <UserProvider>
         {/* nest providers here */}
-        <CoursesProvider>
+       
+        
         <Navbar/>
         <SiteBar/>
         
@@ -25,10 +29,12 @@ function App() {
         <Route exact path="/dash" element={  <DashBoard className="flex"/>} />
         <Route exact path="/addcourse" element={  <AddCourse />} />
         <Route exact path="/classes/:id" element={  <DashClass />} />
+        <Route exact path="/profile" element={  <Profile />} />
+        <Route exact path="/myClasses" element={  <MyCourses />} />
       </Routes>
       
      
-      </CoursesProvider>
+    
     </UserProvider>
   </div>
   );

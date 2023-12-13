@@ -4,4 +4,9 @@ class Student < ApplicationRecord
     dependent: :destroy
     has_many :enrollments
     has_many :courses, through: :enrollments 
+
+    def name 
+        self.user.name
+    
+    end
 end

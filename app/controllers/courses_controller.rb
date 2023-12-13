@@ -1,25 +1,44 @@
 class CoursesController < ApplicationController
-    # before_action :authorized_teacher, only: :create
-    before_action :authorize
+    before_action :authorized_teacher, only: [:create,:update,:destroy]
+
+    
    
 
     def create 
         
-        byebug
-        course = current_user.courses.create!(strong_params)
-        course.valid? render json: course
+        # byebug
+        Rails.logger.info("YOU REACHED CREATE COURSE METHOD")
+        course = current_teacher.courses.create!(strong_params)
+        render json: course
         
     end
     def index 
+        # byebug
         
-        courses = Course.all
-        render json: courses
-     
+        cl = Course.all
+        render json: cl
+           
+    end
+
+    def update 
+      
+        puts "Request Payload: #{params.inspect}"
+        course = current_teacher.courses.find_by(id: params[:id])
+        puts course
+        course.update!( strong_params)
+                  
+        render json: course
+    
+    end
+    def destroy 
+      
+        c = current_teacher.courses.find_by(id: params[:id])
+        c.destroy()
     end
 
     private
     def strong_params 
-        params.permit(:title,:price,:description,:date,:location)
+        params.permit(:title,:price,:description,:date,:location,:id)
     
     end
 end

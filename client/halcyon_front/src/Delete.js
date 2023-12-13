@@ -1,11 +1,15 @@
 import React, { useRef } from 'react'
+import { UserContext } from './context/contex'
+import { useContext } from 'react'
 
-export default function () {
+export default function ({idd}) {
+  const {deleteCourse} = useContext(UserContext)
     const diagRef = useRef()
 
     function handleClickDelete(e){
         e.preventDefault()
         //send data to context to delete class
+        deleteCourse(idd)
         diagRef.current.close()
         
     }
