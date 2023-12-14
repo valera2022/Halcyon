@@ -8,7 +8,7 @@ import { useContext } from 'react'
 
 export default function DashBoard() {
   const {courses} = useContext(UserContext)
-  const fakeList = [1,2,3,4]
+ 
   return (
   
     <div className=' flex h-screen w-screen justify-center pl-[400px] pt-8  bg-gradient-to-r from-amber-500 via-yellow-300 to-pink-500 ... '>

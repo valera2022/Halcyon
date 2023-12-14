@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState ,useContext} from 'react'
 import { UserContext } from './context/contex'
+import useIdentity from './custom_hooks/useIdentity'
+import Errors from './errors'
 
 export default function AddCourse() {
      const [title, setTitle] = useState("")
@@ -8,7 +10,8 @@ export default function AddCourse() {
      const [date, setDate] = useState("")
      const [location, setLocation] = useState("")
      const [price, setPrice] = useState()
-     const {createCourse,courseErrors}= useContext(UserContext)
+     const {createCourse,coursesErrors,loggedin}= useContext(UserContext)
+     const {isTeacher} = useIdentity()
      //  console.log(title)
      //  console.log(description)
      //  console.log(date)
@@ -28,8 +31,11 @@ export default function AddCourse() {
            createCourse(formData)
      }
 
+     if (loggedin && isTeacher()){
+
      return (
-          // pt-[100px] pl-[600px]
+          <>
+       
           <div className='flex justify-center items-center border 2 bg-gradient-to-r from-amber-500 via-yellow-300 to-pink-500 ... w-screen  h-screen'>
                <form onSubmit={handleSubmit}>
                     <div className='rounded-lg  shadow-xl w-[300px] h-[500px] border 6 border-indigo-600 '>
@@ -67,7 +73,16 @@ export default function AddCourse() {
                         
                     </div>
                </form>
-               <ul>{courseErrors}</ul>
+              <div className='border 2 border-red-900 ml-4 mb-80 shadow-md'>
+              {coursesErrors.map(e=> <Errors error={e}/>)} 
+              </div>
+               {/* <ul className=''>{coursesErrors}</ul> */}
           </div>
-     )
+        
+          </>
+         
+     )}
+     else{
+           return <h1 className="text-center">Not Authorized </h1>
+     }
 }

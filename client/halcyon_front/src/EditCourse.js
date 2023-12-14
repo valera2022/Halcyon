@@ -1,6 +1,7 @@
 // import React from 'react'
 import { useState ,useContext, useRef} from 'react'
 import { UserContext } from './context/contex';
+import Errors from './errors';
 
 export default function EditCourse({course}) {
     const editRef = useRef();
@@ -88,7 +89,10 @@ export default function EditCourse({course}) {
                         
                     </div>
                </form>
-               <ul>{coursesErrors}</ul>
+               <div>
+                 {coursesErrors.map(c=><Errors error={c}/>)}
+               </div>
+               
                </dialog>
                <button onClick={openModal} className=" mr-[100px] rounded-md bg-blue-600 w-[100px]  py-2  text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit</button>
               

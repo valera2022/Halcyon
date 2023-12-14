@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, unstable_usePrompt, useNavigate } from "react-router-dom";
 
 
 const UserContext = React.createContext();
@@ -37,8 +37,15 @@ function UserProvider ({children}){
                 if (!data.error) {
                     console.log(data)
                     console.log("auto login")
-
-                    setUser(data)
+                //    let filteredDeleted = courses.map(c => {
+                //         let updatedCourseUser = data.classes.filter(cla => cla.id === c.id)
+                //         // setUser( updatedCourseUser)
+                //    })
+                //    let filterDeleted = data.classes.filter(c=> c.id !== null)
+                //    console.log(filterDeleted)
+                   setUser(data)
+                  
+                   
                     setLoggedin(true)
                     fetchCourses()
                 }
@@ -85,8 +92,8 @@ function UserProvider ({children}){
                 else {
                     // setPitches(pitches)
                     console.log(data.errors)
-                    const mistakes = data.errors.map(e => <li>{e}</li>)
-                    setCourseErrors(mistakes)
+                    // const mistakes = data.errors.map(e => <li>{e}</li>)
+                    setCourseErrors(data.errors)
 
 
                 }
@@ -107,7 +114,7 @@ function UserProvider ({children}){
         })
         .then(res=> res.json())
         .then(data => {
-             if(!data.erros){
+             if(!data.errors){
                 console.log(data)
                 // const foundCourse = courses.find(c=> c.id === formData.id)
                 let editedCourse =courses.map((c)=>{
@@ -125,6 +132,9 @@ function UserProvider ({children}){
                
 
 
+             }
+             else{
+                setCourseErrors(data.errors)
              }
            
         }
@@ -163,10 +173,11 @@ function UserProvider ({children}){
               }
 
               function deleteEnroll(data){
-                fetch(`/enroll/${data.course_id}`,{
+                console.log(data)
+                fetch(`/enroll/${data.id}`,{
                     method:"DELETE",
                     headers:{"Content-Type" : "applicaton/json"},
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data.id)
                    })
                    .then((r)=>{
                     // let filtered = courses.filter( course => course.id !== id)

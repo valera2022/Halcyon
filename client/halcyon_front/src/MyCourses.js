@@ -2,15 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from './context/contex'
 import { useContext } from 'react'
+import useIdentity from './custom_hooks/useIdentity'
 
 
 
 export default function MyCourses() {
-  const{user}= useContext(UserContext)
+  const{user,loggedin}= useContext(UserContext)
+  const {isStudent} = useIdentity()
+  if(loggedin){
   return (
     <div className=' flex h-screen w-screen justify-center pl-[400px] pt-8  bg-gradient-to-r from-amber-500 via-yellow-300 to-pink-500 ... '>
         <div>
-        {user.entryable_type === "Student"?<h1>Enrolled In:</h1> : <h1>Created Courses:</h1> }
+        {isStudent()?<h1>Enrolled In:</h1> : <h1>Created Courses:</h1> }
         <br></br>
        
         
@@ -33,5 +36,8 @@ export default function MyCourses() {
        
        
     </div>
-  )
+  )}
+  else{
+    return <h1 className='text-center'>Not Authorized</h1>
+  }
 }

@@ -4,8 +4,8 @@ import { useContext } from 'react';
 import { UserContext } from './context/contex';
 
 export default function Profile() {
-  const {user}= useContext(UserContext)
-  return (
+  const {user,loggedin}= useContext(UserContext)
+  if(loggedin){return (
 <div className=" flex justify-center  items-center h-[800px] w-full bg-gradient-to-r from-amber-500 via-yellow-300 to-pink-500 ... ">
    
        <div className=' absolute border border-indigo-600  h-[200px] w-[200px] rounded-md shadow-lg '>
@@ -17,4 +17,9 @@ export default function Profile() {
     
 </div>
   )
+}
+else{
+  return <h1>Not Authorized</h1>
+}
+
 }
