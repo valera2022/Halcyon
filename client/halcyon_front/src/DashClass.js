@@ -24,20 +24,20 @@ export default function DashClass() {
       <div className='flex h-screen w-screen justify-center pl-[400px] pt-8  bg-gradient-to-r from-amber-500 via-yellow-300 to-pink-500 ... pr-[400px] '>
         <div className='bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ... w-[500px] h-[335px] m-[20px] shadow-2xl rounded-lg border border-slate-300' >
           <div className=' rounded-lg  text-center bg-zinc-200 border-2 bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ...  ' >
-            <h2  >{course.title}</h2>
+            <h2 className='text-white' >{course.title}</h2>
           </div>
 
           <div className='h-[140px] w-[268px]  ' >
             <div className='mb-[20px] font-semibold'>
-              <p>Date: {course.date}  </p>
+              <p className='text-white'>Date: {course.date}  </p>
             </div>
 
-            <div className=''>
-              <p className='text-center... hyphens-auto ... pb-10 max-w-[480px] max-h-[480px] '>{course.description}</p>
+            <div className='ml-20 w-[300px] h-[100px] max-w-[680px] max-h-[480px] '>
+              <p className=' text-white text-center... hyphens-auto ... mb-10 '>{course.description}</p>
             </div>
             <div className='fixed '>
-              <p className='font-semibold'>Location: {course.location}</p>
-              <p className=' h-[30px] font-semibold  '>Price: {course.price}</p>
+              <p className=' text-white font-semibold'>Location: {course.location}</p>
+              <p className='text-white h-[30px] font-semibold  '>Price: {course.price}</p>
             </div>
           </div>
           {user.id === course.teacher_id ? <div className=' mt-[130px] rounded-lg flex bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ... '>
