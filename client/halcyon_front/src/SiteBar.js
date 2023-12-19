@@ -90,7 +90,7 @@ function handleC1(e){
         {/* <SideIcon icon={<VscInbox size="30" color="white" />}/> */}
        
         <Link  onMouseEnter={()=> handleM1('folder')} onMouseLeave={()=> handleC1('folder')} to="/myClasses"><SideIcon icon={<VscArchive size="30" color="white" />}/></Link>
-        {isShown3? <div className='text-center ml-3 text-xs rounded-sm bg-fire h-[20px] w-[40px]'>Folder</div> : null}
+        {isShown3? <div className='text-center ml-3 text-[7px] rounded-sm bg-fire h-[20px] w-[40px]'>My-Classes </div> : null}
 
        {user.entryable_type === "Teacher"? <Link onMouseEnter={()=> handleM1('add')} onMouseLeave={()=> handleC1('add')} to="/addcourse"><SideIcon  icon={<VscAdd  size="25" color="white" />}/></Link> : null} 
        {isShown4? <div className=' text-center ml-3 text-xs rounded-sm bg-fire h-[20px] w-[40px]'>Add</div> : null}

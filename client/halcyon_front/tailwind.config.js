@@ -5,6 +5,9 @@ module.exports = {
   ],
   darkMode: "media",
   theme: {
+    // fontSize: {
+    //   enano: '1px'},
+
     screens:{
       'sm':'480px',
       'md':'768px',
