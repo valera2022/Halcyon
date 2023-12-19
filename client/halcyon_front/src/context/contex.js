@@ -10,6 +10,7 @@ function UserProvider ({children}){
     const [coursesErrors,setCourseErrors] = useState([])
     const [user, setUser] = useState({})
     const [loggedin, setLoggedin] = useState(false)
+    const [enroll,setEnrollment] = useState({})
     
     const navigate = useNavigate()
     console.log(user)
@@ -37,17 +38,15 @@ function UserProvider ({children}){
                 if (!data.error) {
                     console.log(data)
                     console.log("auto login")
-                //    let filteredDeleted = courses.map(c => {
-                //         let updatedCourseUser = data.classes.filter(cla => cla.id === c.id)
-                //         // setUser( updatedCourseUser)
-                //    })
-                //    let filterDeleted = data.classes.filter(c=> c.id !== null)
-                //    console.log(filterDeleted)
-                   setUser(data)
-                  
-                   
                     setLoggedin(true)
+                    
                     fetchCourses()
+               
+                //    console.log(allCourses)
+            
+                    setUser(data)
+                    
+                   
                 }
 
 
@@ -85,6 +84,7 @@ function UserProvider ({children}){
                 if (!data.errors) {
                     console.log(data)
                     setCourses([...courses, data])
+                    setUser({...user,classes: [...user.classes,data]})
                     navigate("/dash")
 
 
@@ -150,6 +150,11 @@ function UserProvider ({children}){
                    .then((r)=>{
                     let filtered = courses.filter( course => course.id !== id)
                     setCourses(filtered)
+
+                    let deletedUserClass = user.classes.filter(c=> c.id !== id)
+                    console.log(deletedUserClass)
+                    
+                    setUser({...user,classes:  deletedUserClass})
                     
                 
                     console.log("deleting..")
@@ -168,7 +173,25 @@ function UserProvider ({children}){
                         body: JSON.stringify(id)
                     })
                     .then(res=> res.json())
-                    .then(data=> console.log(data))
+                    .then(data=>{
+
+                        console.log(data)
+                        setEnrollment(data)
+                        console.log(courses)
+                        let foundCourse = courses.find(c=>c.id === data.course_id)
+                        let updatedEnrollments = [...foundCourse.enrollments,data]
+                        let updatedCourse = {...foundCourse,enrollments: updatedEnrollments}
+                        let updatedArray = courses.map(course => course.id === data.course_id ? updatedCourse : course)
+                        // setCourses([...courses.enrollments, [...courses.enrollments,data]])
+                        // setUser({...user,classes: [...user.classes,data]})
+                        setCourses(updatedArray)
+                        setUser({...user,classes: [...user.classes,updatedCourse]})
+                        console.log(courses)
+                        // setLoggedin(true)
+
+                    } 
+                       
+                        )
 
               }
 
@@ -186,6 +209,20 @@ function UserProvider ({children}){
                 
                     // console.log("deleting..")
                     // navigate("/dash")
+                 
+                    let foundCourse = courses.find(c=>c.id === data.course_id)
+                    let filteredEnrolled = foundCourse.enrollments.filter(d=> d.id !== data.id)
+                    // let updatedEnrollments = [...foundCourse.enrollments,filteredEnrolled]
+                    let updatedCourse = {...foundCourse,enrollments: filteredEnrolled}
+                    let updatedArray = courses.map(course => course.id === data.course_id ? updatedCourse : course)
+                    // setCourses([...courses.enrollments, [...courses.enrollments,data]])
+                    // setUser({...user,classes: [...user.classes,data]})
+                    setCourses(updatedArray)
+                    // setUser({...user,classes: [...user.classes,updatedCourse]})
+                    setUser({
+                        ...user, classes: user.classes.filter(s=> s.id !== data.course_id )
+                        })
+                    console.log(courses)
 
                    } )
 
@@ -193,7 +230,7 @@ function UserProvider ({children}){
     
 
     return (
-        <UserContext.Provider value={{ deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse }}>
+        <UserContext.Provider value={{enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse }}>
             {children}
         </UserContext.Provider>
     );

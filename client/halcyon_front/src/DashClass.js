@@ -7,9 +7,10 @@ import { useParams } from 'react-router-dom'
 import Enroll from './enroll'
 import EnrolledStudents from './enrolledStudents'
 import useIdentity from './custom_hooks/useIdentity'
+import Errors from './errors'
 
 export default function DashClass() {
-  const { courses, user, loggedin } = useContext(UserContext)
+  const {coursesErrors, courses, user, loggedin } = useContext(UserContext)
   // my own custom hook
   const { isTeacher, isStudent } = useIdentity()
   const { id } = useParams()
@@ -47,11 +48,14 @@ export default function DashClass() {
 
 
           </div> : null}
-          <div className=' '>
+          <div className=' mt-[127px] '>
             {isStudent() ? <Enroll clase={course} /> : null}
 
           </div>
         </div>
+        <div>
+                 {coursesErrors.map(c=><Errors error={c}/>)}
+               </div>
       </div>
 
     )

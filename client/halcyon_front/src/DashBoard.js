@@ -8,6 +8,7 @@ import { useContext } from 'react'
 
 export default function DashBoard() {
   const {courses} = useContext(UserContext)
+  console.log(courses)
  
   return (
   
