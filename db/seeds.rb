@@ -9,7 +9,8 @@
     # User.create(name:"mario",password:"123",entryable_type:"Teacher",entryable_id:t.id)
     # User.create!(name:"josue",password:"sdf") entryable: Teacher.new()
    
- t1 = User.create!(
+ 
+t1 = User.create!(
   entryable: Teacher.create,
   name: 'Kim',
   last_name:"Jim",
@@ -111,6 +112,3 @@ t2 = User.create!(
   )
   # course = current_teacher.courses.create!(strong_params)
   # render json: course
-
-
-
