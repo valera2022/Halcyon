@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
 
     private
     def strong_params 
-        params.permit(:title,:price,:description,:date,:location,:id)
+        params.permit(:title,:price,:description,:date,:location,:time,:id)
     
     end
 end

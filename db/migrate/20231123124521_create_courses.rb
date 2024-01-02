@@ -7,6 +7,7 @@ class CreateCourses < ActiveRecord::Migration[7.0]
       t.date :date
       t.string :location
       t.integer :teacher_id
+      t.string :time
 
       t.timestamps
     end

@@ -54,6 +54,7 @@ t2 = User.create!(
     description:"Cascading Style Sheets allows you to create great-looking web pages, but how does it work ?",
     date:"12/12/2023",
     location:"plaza lama",
+    time: "2:00 PM",
     teacher_id:t1.id,
 
   )
@@ -64,6 +65,7 @@ t2 = User.create!(
     description:"HTMX allow us to create full-stack websites. It is a js library where we mainly use html with build in method to request from back-end.",
     date:"2/10/2023",
     location:"567 Samsom St",
+    time: "3:00 PM",
     teacher_id:t1.id,
 
   )   
@@ -73,6 +75,7 @@ t2 = User.create!(
     description:"Rails is a full-stack framework. It is opinionated about and convention over configuration ",
     date:"12/09/2022",
     location:"1 Garret Avn",
+    time: "9:00 AM",
     teacher_id:t1.id,
 
   )  
@@ -82,6 +85,7 @@ t2 = User.create!(
     description:"Come to learn baking with friends and famility",
     date:"03/04/2024",
     location:"milli's house",
+    time: "10:00 AM",
     teacher_id:t2.id,
 
   )   
@@ -91,6 +95,7 @@ t2 = User.create!(
     description:"Baseball is a complex game and here we will give you tricks to play it smart",
     date:"03/02/2022",
     location:"Yankee Stadium",
+    time: "9:40 AM",
     teacher_id:t2.id,
 
   )   
@@ -100,6 +105,7 @@ t2 = User.create!(
     description:"Domino is all about counting. Come and learn how the world champions play.",
     date:"04/03/2023",
     location:"My House",
+    time: "10:00 PM",
     teacher_id:t2.id,
 
   )

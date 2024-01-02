@@ -17,7 +17,13 @@ export default function DashClass() {
 
   let course = courses.find(c => c.id === parseInt(id))
 
-
+ console.log(course.date)
+  let yourDate = new Date(course.date);
+  
+  // Format the date in MM/DD/YYYY format
+  let usFormattedDate = yourDate.toLocaleDateString('en-US');
+  
+  console.log(usFormattedDate);
 
 
   if (course && loggedin) {
@@ -30,7 +36,7 @@ export default function DashClass() {
 
           <div className='h-[140px] w-[268px]  ' >
             <div className='mb-[20px] font-semibold'>
-              <p className='text-white'>Date: {course.date}  </p>
+              <p className='text-white'>Date: {usFormattedDate}  </p>
             </div>
 
             <div className='ml-20 w-[300px] h-[100px] max-w-[680px] max-h-[480px] '>
@@ -38,6 +44,7 @@ export default function DashClass() {
             </div>
             <div className='fixed '>
               <p className=' text-white font-semibold'>Location: {course.location}</p>
+              <p className=' text-white font-semibold'>Time: {course.time }</p>
               <p className='text-white h-[30px] font-semibold  '>Price: {course.price}</p>
             </div>
           </div>

@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-    validates :title,:price,:description,:date,:location, presence: true
+    validates :title,:price,:description,:date,:location,:time, presence: true
     validates :title, uniqueness: true
     belongs_to :teacher
     has_many :enrollments , dependent: :destroy

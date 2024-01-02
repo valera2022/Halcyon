@@ -10,6 +10,7 @@ export default function AddCourse() {
      const [date, setDate] = useState("")
      const [location, setLocation] = useState("")
      const [price, setPrice] = useState()
+     const [time,setTime] = useState()
      const {createCourse,coursesErrors,loggedin}= useContext(UserContext)
      const {isTeacher} = useIdentity()
      //  console.log(title)
@@ -23,7 +24,8 @@ export default function AddCourse() {
           description: description,
           date: date,
           location: location,
-          price: price
+          price: price,
+          time: time
      }
 
      function handleSubmit(e){
@@ -60,6 +62,11 @@ export default function AddCourse() {
                               <label >Location</label>
                               <br></br>
                               <input className="  ring-1 ring-inset ring-gray-300  rounded-md border-2 border-slate-400" type="text" name="location" value={location} onChange={e => setLocation(e.target.value)} />
+                         </div>
+                         <div className='pb-3 pl-4'>
+                              <label >Time</label>
+                              <br></br>
+                              <input className="  ring-1 ring-inset ring-gray-300  rounded-md border-2 border-slate-400" type="text" name="location" value={time} onChange={e => setTime(e.target.value)} />
                          </div>
                          <div className='pb-16 pl-4'>
                               <label >Price</label>
