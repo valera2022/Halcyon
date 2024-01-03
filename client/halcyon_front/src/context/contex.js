@@ -32,7 +32,7 @@ function UserProvider ({children}){
     }
 
     useEffect(() => {
-        fetch("/me")
+        fetch("/")
             .then(res => res.json())
             .then(data => {
                 if (!data.error) {
