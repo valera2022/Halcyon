@@ -26,7 +26,10 @@ Rails.application.routes.draw do
   # resources :courses
   resources :test
 
-  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  
+  get '*path', to: "fallback#index", constraints: -> (request) do
+  !request.xhr? && request.format.html?
 
 
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
