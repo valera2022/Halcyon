@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   
   # Defines the root path route ("/")
   # root "courses#show"
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  # get '*path', to: 'your_react_controller#your_react_action', constraints: -> (request) do
+  # !request.xhr? && request.format.html?
   
   get "/me", to:"users#show"
   post "/login", to:"sessions#create"
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
 
   # resources :courses
   resources :test
-  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+
 
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
