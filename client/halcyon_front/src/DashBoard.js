@@ -10,13 +10,13 @@ import { useState } from 'react'
 
 export default function DashBoard() {
   const {courses} = useContext(UserContext)
-  const [search,setSearch] = useState("")
+  const [search,setSearch] = useState(null)
 
   const itemsToDisplay = courses.filter((data) => {
     // debugger;
   
     console.log(data)
-    if(search === ""){
+    if(search === null  ){
       return courses
 
     }
