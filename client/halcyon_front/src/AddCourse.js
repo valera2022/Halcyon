@@ -2,7 +2,7 @@ import React from 'react'
 import { useState ,useContext} from 'react'
 import { UserContext } from './context/contex'
 import useIdentity from './custom_hooks/useIdentity'
-import Errors from './errors'
+// import Errors from './errors'
 
 export default function AddCourse() {
      const [title, setTitle] = useState("")
@@ -11,7 +11,7 @@ export default function AddCourse() {
      const [location, setLocation] = useState("")
      const [price, setPrice] = useState()
      const [time,setTime] = useState()
-     const {createCourse,coursesErrors,loggedin}= useContext(UserContext)
+     const {createCourse,coursesErrors,loggedin,patchCourse}= useContext(UserContext)
      const {isTeacher} = useIdentity()
      //  console.log(title)
      //  console.log(description)
@@ -81,7 +81,11 @@ export default function AddCourse() {
                     </div>
                </form>
               <div className='border 2 border-red-900 ml-4 mb-80 shadow-md'>
-              {coursesErrors.map(e=> <Errors error={e}/>)} 
+              {coursesErrors.map(e=> {
+                 <ul>
+                 <li className='text-red-600 sha' >{e}</li>
+            </ul>
+              })} 
               </div>
                {/* <ul className=''>{coursesErrors}</ul> */}
           </div>

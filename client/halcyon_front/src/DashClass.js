@@ -17,16 +17,18 @@ export default function DashClass() {
 
   let course = courses.find(c => c.id === parseInt(id))
 
- console.log(course.date)
-  let yourDate = new Date(course.date);
+//  console.log(course.date)
+
   
   // Format the date in MM/DD/YYYY format
-  let usFormattedDate = yourDate.toLocaleDateString('en-US');
   
-  console.log(usFormattedDate);
+  
+  // console.log(usFormattedDate);
 
 
   if (course && loggedin) {
+    let yourDate = new Date(course.date);
+    let usFormattedDate = yourDate.toLocaleDateString('en-US');
     return (
       <div className='flex h-screen w-screen justify-center pl-[400px] pt-8  bg-gradient-to-r from-amber-500 via-yellow-300 to-pink-500 ... pr-[400px] '>
         <div className='bg-gradient-to-r from-blue-700 via-cyan-700 to-cyan-500 ... w-[500px] h-[335px] m-[20px] shadow-2xl rounded-lg border border-slate-300' >
@@ -60,9 +62,7 @@ export default function DashClass() {
 
           </div>
         </div>
-        <div>
-                 {coursesErrors.map(c=><Errors error={c}/>)}
-               </div>
+       
       </div>
 
     )

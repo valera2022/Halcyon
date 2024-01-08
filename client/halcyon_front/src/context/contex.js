@@ -127,6 +127,7 @@ function UserProvider ({children}){
                 })
 
                 setCourses(editedCourse)
+                setCourseErrors([])
                 // let updatedCourse = { ...foundCourse, courses: editedCourse}
                 // courses.map(c=>{})
                
@@ -230,7 +231,7 @@ function UserProvider ({children}){
     
 
     return (
-        <UserContext.Provider value={{enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse }}>
+        <UserContext.Provider value={{enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse,setCourseErrors }}>
             {children}
         </UserContext.Provider>
     );
