@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "./context/contex";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 function Login() {
   const [password, setPassword] = useState("")
@@ -84,6 +85,8 @@ function Login() {
             <div className="pl-6 pt-8">
               <button type="submit" className="rounded-md bg-indigo-600 w-[100px]  py-2  text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Log In</button>
             </div>
+
+               <div> <Link to="/signup">Do not have an Account ? Sign UP</Link> </div>
 
 
 
