@@ -27,6 +27,7 @@ function App() {
         
       <Routes>
         <Route exact path="/" element={<Login/>} />
+        <Route exact path="/signup" element={<Signup/>} />
         <Route exact path="/dash" element={  <DashBoard className="flex"/>} />
         <Route exact path="/addcourse" element={  <AddCourse />} />
         <Route exact path="/classes/:id" element={  <DashClass />} />
