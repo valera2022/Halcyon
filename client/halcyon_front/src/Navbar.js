@@ -44,7 +44,7 @@ export default function Navbar() {
           }}
           
          onClick={logMeOut}>
-           <p className="mt-2">Logmeout</p>  
+           <p className="mt-2">Log me out</p>  
         </NavLink>
     </div>
     // </div>
