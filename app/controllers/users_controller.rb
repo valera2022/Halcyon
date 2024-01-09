@@ -10,4 +10,14 @@ class UsersController < ApplicationController
         end
      
      end
+     def create 
+        user = User.create!(strong_params)
+        session[:user_id] = user.id
+        render json: user
+    end
+   
+    def strong_params 
+        params.permit(:name,:username,:password,:password_confirmation )
+    
+    end
 end
