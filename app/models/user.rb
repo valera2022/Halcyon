@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     delegated_type :entryable, types: %w[ Student Teacher ], dependent: :destroy
     has_secure_password
-    validates :name,:username,:password,presence: true
+    validates :name,:username,:password,:password_confirmation,presence: true
     validates :username,uniqueness: true
     validates :password,presence: true, length: { in: 6..20 } 
 
