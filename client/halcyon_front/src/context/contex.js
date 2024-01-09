@@ -31,6 +31,12 @@ function UserProvider ({children}){
 
     }
 
+      const signup = (user) => {
+        setUser(user)
+        setLoggedin(true)
+
+    }
+
     useEffect(() => {
         fetch("/me")
             .then(res => res.json())
@@ -231,7 +237,7 @@ function UserProvider ({children}){
     
 
     return (
-        <UserContext.Provider value={{enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse,setCourseErrors }}>
+        <UserContext.Provider value={{enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse,setCourseErrors,signup }}>
             {children}
         </UserContext.Provider>
     );
