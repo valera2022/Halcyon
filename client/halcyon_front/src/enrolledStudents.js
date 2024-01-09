@@ -1,4 +1,4 @@
-import React from 'react'
+-import React from 'react'
 import { useRef } from 'react'
 import { UserContext } from './context/contex'
 import { useContext } from 'react'
@@ -24,7 +24,7 @@ export default function EnrolledStudents({curso}) {
             <div className='h-[400px] w-[250px] rounded-lg shadow-md  bg-gradient-to-r from-cyan-500 to-blue-500 ...'> 
                 <div className='pt-2'>
                 <h1> Enrolled Students : </h1> 
-                    <ul>{curso.students.map(student=><li>{student.name}</li>)}</ul>
+                    <ul>{curso.students.map(student=><li key={student.id}>{student.name}</li>)}</ul>
                    
                 
                </div>
