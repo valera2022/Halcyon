@@ -10,7 +10,7 @@ export default function EditCourse({course}) {
      const [date, setDate] = useState(course.date);
      const [location, setLocation] = useState(course.location);
      const [price, setPrice] = useState(course.price);
-     const {coursesErrors,patchCourse,setCourseErrors,render,setRender}= useContext(UserContext)
+     const {user,coursesErrors,setCourseErrors,setCourses,courses,setUser}= useContext(UserContext)
       console.log(title)
       console.log(description)
       console.log(date)
@@ -28,24 +28,67 @@ export default function EditCourse({course}) {
 
      function handleSubmit(e){
            e.preventDefault()
-          
-           //send data to context
-          //  if(patchCourse(formData) ){
-          //      editRef.current.close()
-          //      setCourseErrors([])
 
-          patchCourse(formData)
-          console.log(render)
 
-          //  }
-            if(render === true){
-               editRef.current.close()
-           }
-           else{
-               editRef.current.showModal()
+           fetch(`/classes/${formData.id}`,{
+               method: "PATCH",
+               headers: {
+                   "Content-Type": "application/json",
+                
+   
+               },
+               body: JSON.stringify( formData)
+           })
+           .then(res=> res.json())
+           .then(data => {
+             
+                if(!data.errors){
+                   console.log(data)
+                 
+                   // const foundCourse = courses.find(c=> c.id === formData.id)
+                   let editedCourse =courses.map((c)=>{
+                       if (c.id === data.id){
+                             return data
+                       }
+                       else {
+                           return c
+                       }
+                   })
+
+                   let userClasses = editedCourse.filter((c=> c.entryable_id === user.id))
+               //  
+               console.log(userClasses)
+
+   
+                   setCourses(editedCourse)
+                   setCourseErrors([])
+                   setUser({...user,classes:  userClasses})
+                   // let updatedCourse = { ...foundCourse, courses: editedCourse}
+                   // courses.map(c=>{})
+                   editRef.current.close()
+                  
+              
+   
+                }
+                else{
+                   console.log(data.errors)
+                   setCourseErrors(data.errors)
+                 
+                  
+               
+                  
+                }
               
            }
+           )
            
+          
+          
+
+         
+      
+         
+        
            
 
            

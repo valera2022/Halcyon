@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import { GiBanana } from "react-icons/gi";
 import { Navigate, unstable_usePrompt, useNavigate } from "react-router-dom";
 
 
@@ -11,7 +12,7 @@ function UserProvider ({children}){
     const [user, setUser] = useState({})
     const [loggedin, setLoggedin] = useState(false)
     const [enroll,setEnrollment] = useState({})
-    const [render,setRender]= useState(true)
+    // const [render,setRender]= useState(true)
     
     const navigate = useNavigate()
     console.log(user)
@@ -108,50 +109,7 @@ function UserProvider ({children}){
             })
     }
     
-    function patchCourse(formData){
-        console.log(formData.title)
-        fetch(`/classes/${formData.id}`,{
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-             
-
-            },
-            body: JSON.stringify( formData)
-        })
-        .then(res=> res.json())
-        .then(data => {
-          
-             if(!data.errors){
-                console.log(data)
-              
-                // const foundCourse = courses.find(c=> c.id === formData.id)
-                let editedCourse =courses.map((c)=>{
-                    if (c.id === data.id){
-                          return data
-                    }
-                    else {
-                        return c
-                    }
-                })
-
-                setCourses(editedCourse)
-                setCourseErrors([])
-                // let updatedCourse = { ...foundCourse, courses: editedCourse}
-                // courses.map(c=>{})
-               
-               setRender(true)
-
-             }
-             else{
-                console.log(data.errors)
-                setCourseErrors(data.errors)
-               setRender(false)
-             }
-           
-        }
-        )
-    }
+    
               function deleteCourse(id){
                 console.log(id)
                    fetch(`/classes/${id}`,{
@@ -242,7 +200,7 @@ function UserProvider ({children}){
     
 
     return (
-        <UserContext.Provider value={{setRender,render,enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse,setCourseErrors,signup }}>
+        <UserContext.Provider value={{setUser,setCourses,enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,deleteCourse,setCourseErrors,signup }}>
             {children}
         </UserContext.Provider>
     );

@@ -10,7 +10,7 @@ function Signup (){
     const [dob, setDob] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [errorsList,setErrorsList] = useState([])
-    const {signup} = useContext(UserContext);
+    const {signup,loggedin} = useContext(UserContext);
 
     let navigate = useNavigate()
    
@@ -61,7 +61,7 @@ function Signup (){
   
   
     }
-  
+   if(!loggedin){
     return (
       <div className=' flex h-screen w-screen justify-center pl-[400px] pt-8  bg-gradient-to-r from-amber-500 via-yellow-300 to-pink-500 ... '>
         <div className='mr-[450px] rounded-lg  shadow-xl w-[300px] h-[500px] border 6 border-indigo-600 '>
@@ -130,6 +130,10 @@ function Signup (){
      
         </div>
       </div>)
+   }
+   else{
+    <h1>You are loggedin</h1>
+   }
 
 }
 
