@@ -68,7 +68,8 @@ function Signup (){
         <div className='mr-[450px] rounded-lg  shadow-xl w-[300px] h-[500px] border 6 border-indigo-600 '>
         <form onSubmit={handleSubmit}>
         <div className='pl-4'>
-                              <h1 className='  text-base  font-semibold leading-7 text-gray-900 pl-[90px]  pb-4 '>Sign UP</h1>
+                              <h1 className='  text-base  font-semibold leading-7 text-gray-900 pl-[90px]  pb-1 '>Sign UP</h1>
+                              <p className=" text-[8px]">Sign up is not for Teachers only for Students. Please Contact Admin if you are a Teacher.</p>
                               <label >Name</label>
                               <br></br>
                               <input className=" ring-1 ring-inset ring-gray-300  rounded-md border-2 border-slate-400" type="text" name="name" value={name} onChange={e => setName(e.target.value)}  />
