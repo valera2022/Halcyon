@@ -43,12 +43,13 @@ function Signup (){
            if(!data.errors){
              signup(data)
              navigate("/dash")
+             setName("")
+             setPassword("")
+             setUsername("")
+             setPasswordConfirmation("")
            }
            else {
-            setName("")
-            setPassword("")
-            setUsername("")
-            setPasswordConfirmation("")
+           
            
             const errors = data.errors.map(e => <li>{e}</li>) 
             setErrorsList(errors)
@@ -101,7 +102,8 @@ function Signup (){
           <div className='pl-4'>
                               
                               <label >Password</label>
-                              <br></br>
+                              <p className=" text-[8px]">Password must be bigger than 6 characters and less than 20</p>
+                              
                               <input className=" ring-1 ring-inset ring-gray-300  rounded-md border-2 border-slate-400" type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
          </div>
           

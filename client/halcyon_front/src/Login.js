@@ -86,7 +86,7 @@ function Login() {
               <button type="submit" className="rounded-md bg-indigo-600 w-[100px]  py-2  text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Log In</button>
             </div>
 
-               <div className=" mt-2 text-xs text-cyan-700"> <Link to="/signup">Do not have an Account ? Sign Up</Link> </div>
+               <div className=" mt-2 text-xs text-cyan-700"> <Link to="/signup">Are you a new Student ? Sign Up</Link> </div>
 
 
 
