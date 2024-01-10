@@ -109,7 +109,12 @@ function UserProvider ({children}){
             })
     }
     
-    
+    //  function patchCourse(formData){
+    //     let render 
+    //     console.log(formData.title)
+     
+    //     return render
+    // }
               function deleteCourse(id){
                 console.log(id)
                    fetch(`/classes/${id}`,{
@@ -200,7 +205,7 @@ function UserProvider ({children}){
     
 
     return (
-        <UserContext.Provider value={{setUser,setCourses,enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,deleteCourse,setCourseErrors,signup }}>
+        <UserContext.Provider value={{setCourses,setUser,enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,deleteCourse,setCourseErrors,signup }}>
             {children}
         </UserContext.Provider>
     );

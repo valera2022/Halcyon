@@ -56,17 +56,23 @@ export default function EditCourse({course}) {
                    })
 
                //     let userClasses = editedCourse.filter((c=> c.entryable_id === user.id))
-               //  
+               // //  
                // console.log(userClasses)
 
    
                    setCourses(editedCourse)
                    setCourseErrors([])
-                   
-               //     let deletedUserClass = user.classes.filter(c=> c.id !== id)
-                   setUser({...user,classes: [...user.classes,data]})
-                   // let updatedCourse = { ...foundCourse, courses: editedCourse}
-                   // courses.map(c=>{})
+               //     let deletedUserClass = user.classes.filter(c=> c.id !== )
+               let editedUserCourse =user.classes.map((c)=>{
+                    if (c.id === data.id){
+                          return data
+                    }
+                    else {
+                        return c
+                    }
+                })
+                   setUser({...user,classes: editedUserCourse})
+              
                    editRef.current.close()
                   
               
