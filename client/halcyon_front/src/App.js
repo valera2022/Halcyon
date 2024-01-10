@@ -6,6 +6,7 @@ import { Routes,Route } from 'react-router-dom';
 import Login from './Login';
 import Navbar from './Navbar';
 import AddCourse from './AddCourse';
+import Signup from './SignUp'
 
 import DashClass from './DashClass';
 import Profile from './Profile';

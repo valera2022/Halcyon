@@ -11,13 +11,25 @@ class UsersController < ApplicationController
      
      end
      def create 
-        user = User.create!(strong_params)
+        # byebug
+        user = User.create!(
+            entryable: Student.create,
+            name: params[:name],
+            last_name:params[:last_name],
+            username:params[:username],
+            dob:params[:dob],
+            password: params[:password],
+            password_confirmation: params[:password_confirmation]
+            
+            
+          )
+      
         session[:user_id] = user.id
         render json: user
     end
    
     def strong_params 
-        params.permit(:name,:username,:password,:password_confirmation )
+        params.permit(:name,:username,:password,:password_confirmation,:dob,:last_name) 
     
     end
 end

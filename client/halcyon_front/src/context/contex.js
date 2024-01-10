@@ -11,6 +11,7 @@ function UserProvider ({children}){
     const [user, setUser] = useState({})
     const [loggedin, setLoggedin] = useState(false)
     const [enroll,setEnrollment] = useState({})
+    const [render,setRender]= useState(true)
     
     const navigate = useNavigate()
     console.log(user)
@@ -31,8 +32,8 @@ function UserProvider ({children}){
 
     }
 
-      const signup = (user) => {
-        setUser(user)
+      const signup = (data) => {
+        setUser(data)
         setLoggedin(true)
 
     }
@@ -106,7 +107,7 @@ function UserProvider ({children}){
 
             })
     }
-
+    
     function patchCourse(formData){
         console.log(formData.title)
         fetch(`/classes/${formData.id}`,{
@@ -120,8 +121,10 @@ function UserProvider ({children}){
         })
         .then(res=> res.json())
         .then(data => {
+          
              if(!data.errors){
                 console.log(data)
+              
                 // const foundCourse = courses.find(c=> c.id === formData.id)
                 let editedCourse =courses.map((c)=>{
                     if (c.id === data.id){
@@ -137,11 +140,13 @@ function UserProvider ({children}){
                 // let updatedCourse = { ...foundCourse, courses: editedCourse}
                 // courses.map(c=>{})
                
-
+               setRender(true)
 
              }
              else{
+                console.log(data.errors)
                 setCourseErrors(data.errors)
+               setRender(false)
              }
            
         }
@@ -237,7 +242,7 @@ function UserProvider ({children}){
     
 
     return (
-        <UserContext.Provider value={{enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse,setCourseErrors,signup }}>
+        <UserContext.Provider value={{setRender,render,enroll, deleteEnroll, createEnrollment, user,login,loggedin,logout,createCourse,coursesErrors,courses,patchCourse,deleteCourse,setCourseErrors,signup }}>
             {children}
         </UserContext.Provider>
     );

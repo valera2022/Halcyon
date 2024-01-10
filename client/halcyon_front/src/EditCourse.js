@@ -10,7 +10,7 @@ export default function EditCourse({course}) {
      const [date, setDate] = useState(course.date);
      const [location, setLocation] = useState(course.location);
      const [price, setPrice] = useState(course.price);
-     const {coursesErrors,patchCourse,setCourseErrors}= useContext(UserContext)
+     const {coursesErrors,patchCourse,setCourseErrors,render,setRender}= useContext(UserContext)
       console.log(title)
       console.log(description)
       console.log(date)
@@ -28,14 +28,27 @@ export default function EditCourse({course}) {
 
      function handleSubmit(e){
            e.preventDefault()
+          
            //send data to context
-           if(patchCourse(formData)){
+          //  if(patchCourse(formData) ){
+          //      editRef.current.close()
+          //      setCourseErrors([])
+
+          patchCourse(formData)
+          console.log(render)
+
+          //  }
+            if(render === true){
                editRef.current.close()
-               setCourseErrors([])
-
-
-
            }
+           else{
+               editRef.current.showModal()
+              
+           }
+           
+           
+
+           
           
           
      }
@@ -60,7 +73,7 @@ export default function EditCourse({course}) {
                          <div className='pl-4'>  
                               <label >Title</label>
                               <br></br>
-                              <input className="rounded-md border-2 border-slate-400"type="text" name="title" value={title} onChange={e => setTitle(e.target.value)} />
+                              <input className=" rounded-md border-2 border-slate-400"type="text" name="title" value={title} onChange={e => setTitle(e.target.value)} />
                          </div>
                          <br></br>
                          <div className='pb-3 pl-4 '>
