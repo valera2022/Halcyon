@@ -10,6 +10,10 @@
 * Start React front-end
     npm start
 
+*Log in Info in Seed Data, try this for a Teacher Account:
+   username: PP
+   password: openss
+
 
 
 
