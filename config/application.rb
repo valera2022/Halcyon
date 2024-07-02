@@ -16,7 +16,8 @@ module Halcyon
     config.load_defaults 7.0
     config.api_only = true
     # export RAILS_ENV=production
-    RAILS_ENV=production
+    # RAILS_ENV= "production"
+    config.RAILS_ENV = ENV['RAILS_ENV']
   
     # config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
     #   allow do
