@@ -8,7 +8,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  config.secret_key_base = [f50a5b27d774614ef824affa7b902eb29d078bbb0eca790b994e81fae0964ec24f42e3cdfbb44860ab94a44b5402ba88f54843d01ae92683c1ec06f7eef77fbe]
+  # config.secret_key_base = [f50a5b27d774614ef824affa7b902eb29d078bbb0eca790b994e81fae0964ec24f42e3cdfbb44860ab94a44b5402ba88f54843d01ae92683c1ec06f7eef77fbe]
 
   # Do not eager load code on boot.
   config.eager_load = false
