@@ -15,6 +15,8 @@ module Halcyon
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.api_only = true
+    export RAILS_ENV=production
+  
     # config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
     #   allow do
     #     origins '*'
