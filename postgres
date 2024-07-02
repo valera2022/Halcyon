@@ -1,0 +1,16 @@
+                                                   List of databases
+                     Name                     |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+----------------------------------------------+----------+----------+-------------+-------------+-----------------------
+ bird_app_development                         | valera   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ bird_app_test                                | valera   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres                                     | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ project_development                          | valera   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ project_test                                 | valera   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ react_rails_api_project_template_development | valera   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ react_rails_api_project_template_test        | valera   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0                                    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                                              |          |          |             |             | postgres=CTc/postgres
+ template1                                    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                                              |          |          |             |             | postgres=CTc/postgres
+(9 rows)
+
