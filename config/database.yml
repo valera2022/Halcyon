@@ -25,10 +25,11 @@ test:
 
 production:
   <<: *default
-    database: project_development
-  # url: <%= ENV['DATABASE_URL'] %>
+    database: halcyon_pro
+    url: <%= ENV['DATABASE_URL'] %>
   # database: data_production
-  # username: valera
-  # password: <%= ENV['YOUR_APP_DATABASE_PASSWORD'] %>
+    username: halcyon_pro_user
+    password: 9aOLNxIRhNqyDhSM43yr09SsqQmIzCh7
+  #  <%= ENV['YOUR_APP_DATABASE_PASSWORD'] %>
   # host: localhost
 
