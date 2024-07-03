@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "./context/contex";
 import { NavLink } from "react-router-dom";
-import index from "./index.css"
+// import index from "./index.css"
 import Logo from "./Logo"
 
 

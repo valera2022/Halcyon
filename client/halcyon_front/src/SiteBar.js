@@ -1,6 +1,6 @@
 import React from 'react'
 import SideIcon from './SideIcon'
-import { VscAccount,VscBook,VscInbox, VscArchive,VscAdd } from "react-icons/vsc";
+import { VscAccount,VscBook, VscArchive,VscAdd } from "react-icons/vsc";
 
 import { Link } from 'react-router-dom';
 import { UserContext } from './context/contex';
@@ -14,18 +14,18 @@ export default function SiteBar() {
   const [isShown2, setIsShown2] = useState(false);
   const [isShown3, setIsShown3] = useState(false);
   const [isShown4, setIsShown4] = useState(false);
-  const ref1 = useRef()
+  // const ref1 = useRef()
   const {loggedin,user} = useContext(UserContext)
 
   console.log(user)
 
-  function handleClick(e){
-    e.preventDefault()
-    // navigate("/addcourse")
+  // function handleClick(e){
+  //   e.preventDefault()
+  //   // navigate("/addcourse")
    
 
 
-  }
+  // }
 
 //    function show1(){
 //       ref1.current.showModal()
@@ -49,6 +49,7 @@ function handleM1(e){
       break;
     case 'add':
        setIsShown4(true)
+       break;
     default:
       ;
   }
@@ -71,6 +72,7 @@ function handleC1(e){
       break;
     case 'add':
        setIsShown4(false)
+       break;
     default:
       ;
   }

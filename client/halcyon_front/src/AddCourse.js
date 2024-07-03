@@ -11,7 +11,7 @@ export default function AddCourse() {
      const [location, setLocation] = useState("")
      const [price, setPrice] = useState()
      const [time,setTime] = useState()
-     const {createCourse,coursesErrors,loggedin,patchCourse}= useContext(UserContext)
+     const {createCourse,coursesErrors,loggedin}= useContext(UserContext)
      const {isTeacher} = useIdentity()
      //  console.log(title)
      //  console.log(description)
@@ -82,9 +82,11 @@ export default function AddCourse() {
                </form>
               <div className='border 2 border-red-900 ml-4 mb-80 shadow-md'>
               {coursesErrors.map(e=> {
-                 <ul>
+                return(<div>
+                    <ul>
                  <li className='text-red-600 sha' >{e}</li>
-            </ul>
+               </ul>
+                </div>) 
               })} 
               </div>
                {/* <ul className=''>{coursesErrors}</ul> */}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { GiBanana } from "react-icons/gi";
-import { Navigate, unstable_usePrompt, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 
 
 const UserContext = React.createContext();

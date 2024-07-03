@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { UserContext } from './context/contex'
 import { useContext } from 'react'
 
-export default function ({idd}) {
+export default function Delete ({idd}) {
   const {deleteCourse} = useContext(UserContext)
     const diagRef = useRef()
 

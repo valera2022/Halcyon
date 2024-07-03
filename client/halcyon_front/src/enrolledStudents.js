@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRef } from 'react'
-import { UserContext } from './context/contex'
-import { useContext } from 'react'
+
+
 import useIdentity from './custom_hooks/useIdentity'
 
 export default function EnrolledStudents({curso}) {

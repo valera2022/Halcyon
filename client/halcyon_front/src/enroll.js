@@ -1,11 +1,11 @@
 import React from 'react'
 import { UserContext } from './context/contex'
-import { useContext,useRef,useState } from 'react'
+import { useContext} from 'react'
 import useIdentity from './custom_hooks/useIdentity'
 
 export default function Enroll({clase}) {
-    const {isTeacher,isStudent} = useIdentity()
-    const {user,createEnrollment,deleteEnroll,enroll} = useContext(UserContext)
+    const {isStudent} = useIdentity()
+    const {user,createEnrollment,deleteEnroll} = useContext(UserContext)
     console.log(clase)
 
     // const [isEnroll,setEnroll]= useState("enroll")

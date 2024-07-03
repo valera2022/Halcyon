@@ -7,10 +7,10 @@ import { useParams } from 'react-router-dom'
 import Enroll from './enroll'
 import EnrolledStudents from './enrolledStudents'
 import useIdentity from './custom_hooks/useIdentity'
-import Errors from './errors'
+// import Errors from './errors'
 
 export default function DashClass() {
-  const {coursesErrors, courses, user, loggedin } = useContext(UserContext)
+  const { courses, user, loggedin } = useContext(UserContext)
   // my own custom hook
   const { isTeacher, isStudent } = useIdentity()
   const { id } = useParams()

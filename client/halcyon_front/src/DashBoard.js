@@ -1,5 +1,5 @@
 import React from 'react'
-import DashClass from './DashClass'
+// import DashClass from './DashClass'
 import DashList from './DashList'
 import { UserContext } from './context/contex'
 import { useContext } from 'react'
