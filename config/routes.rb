@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :test
 
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
-  
+  root 'fallback#index'
   get '*path', to: "fallback#index", constraints: -> (request) do
   !request.xhr? && request.format.html?
    end

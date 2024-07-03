@@ -18,6 +18,7 @@ module Halcyon
     # export RAILS_ENV=production
     # RAILS_ENV= "production"
     config.RAILS_ENV = ENV['RAILS_ENV']
+    config.middleware.insert_before 0, Rack::Static, urls: ['/'], root: 'client/halcyon_front/build', index: 'index.html'
   
     # config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
     #   allow do
