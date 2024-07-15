@@ -8,6 +8,6 @@ class FallbackController < ActionController::API
       # render file: Rails.root.join('public', 'index.html')
       # render file: Rails.root.join('client', 'halcyon_front', 'build', 'index.html')
       # render file: Rails.root.join('public', 'index.html')
-      render file: './public/index.html'
+      render file: '../public/index.html'
     end
   end
