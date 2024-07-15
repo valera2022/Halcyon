@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     skip_before_action :authorize, only: [:create]
    
     def create 
-      
+        Rails.logger.info "login attempt: #{params.inspect}"
       
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])

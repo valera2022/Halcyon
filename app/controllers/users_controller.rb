@@ -12,6 +12,7 @@ class UsersController < ApplicationController
      end
      def create 
         # byebug
+        Rails.logger.info "Signup attempt: #{params.inspect}"
         user = User.create!(
             entryable: Student.create,
             name: params[:name],
