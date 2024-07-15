@@ -2,12 +2,12 @@
 # Leave this here to help deploy your app later!
 class FallbackController < ActionController::API
 
-    def index
-      # React app index page
-      # render file: 'client/halcyon_front/public/index.html'
-      # render file: Rails.root.join('public', 'index.html')
-      # render file: Rails.root.join('client', 'halcyon_front', 'build', 'index.html')
-      # render file: Rails.root.join('public', 'index.html')
-      render file: '../public/index.html'
+  def index
+    file_path = Rails.root.join('public', 'index.html')
+    if File.exist?(file_path)
+      render file: file_path
+    else
+      render html: "React app not found", status: 404
     end
+  end
   end
