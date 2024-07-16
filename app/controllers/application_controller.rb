@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
     include ActionController::Cookies
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     before_action :authorize
-    protect_from_forgery with: :null_session
+   
 
     # ActionDispatch::Request.new(ENV)
     def current_user
